@@ -3,10 +3,12 @@
   <div class="notes">
     <div class="note" :class="{ full: !grid }" v-for="(note, index) in notes" :key="index" @click="fixNote()">
       <div class="note-header" :class="{ full: !grid }" >
-        <p class="note-title">{{ note.title }}</p>
+        <p class="note-title" >{{ note.title }} </p>
         <p style="cursor: pointer;" @click="removeNote(index)">x</p>
       </div>
       <div class="note-body">
+        <span class="note-body-color" @click="toggleColorRed(index)">red</span>
+        <span @click="toggleColorGreen(index)">green</span>
         <p class="note-descr">{{ note.descr }}</p>
         <span>{{ note.date }}</span>
       </div>
@@ -24,7 +26,7 @@ export default {
     grid: {
       type: Boolean,
       required: true
-    },
+    }
   },
   methods: {
     removeNote (index) {
@@ -34,6 +36,12 @@ export default {
     fixNote () {
       this.$emit('fixNote')
     },
+    toggleColorRed(index) {
+      this.$emit('togglecolorRed', index)
+    },
+    toggleColorGreen(index) {
+      this.$emit('togglecolorGreen', index)
+    }
   }
 }
 </script>
@@ -62,6 +70,7 @@ export default {
     width: 100%;
     text-align: center;
   }
+
 }
 .note-header {
   display: flex;
@@ -94,6 +103,7 @@ export default {
     }
   }
 }
+
 .note-body{
   p {
     margin: 20px 0;
@@ -103,5 +113,18 @@ export default {
     color: #999999;
   }
 }
+
+.red {
+  background-color: rgb(170, 47, 47);
+}
+
+.green {
+  background-color: rgb(79, 156, 69);
+}
+
+.note-body-color {
+  margin-right: 30px;
+}
+
 </style>
 
