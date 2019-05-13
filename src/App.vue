@@ -106,8 +106,8 @@ export default {
   },
   methods: {
     save () {
-      let noteDescr = document.querySelectorAll('.note-descr')
-      let noteTitle  = document.querySelectorAll('.note-title')
+      const noteDescr = document.querySelectorAll('.note-descr')
+      const noteTitle  = document.querySelectorAll('.note-title')
         for (let i = 0; i < noteDescr.length; i++) {
           
           localStorage.setItem(`noteDescr${[i]}`, noteDescr[i].innerHTML);
@@ -136,9 +136,9 @@ export default {
       this.notes.splice(index, 1)
     },
     fixNote () {
-      let text = document.querySelector('.notes')
-      let noteDescr = document.querySelectorAll('.note-descr')
-      let noteTitle  = document.querySelectorAll('.note-title')
+      const text = document.querySelector('.notes')
+      const noteDescr = document.querySelectorAll('.note-descr')
+      const noteTitle  = document.querySelectorAll('.note-title')
         for (let i = 0; i < noteDescr.length; i++) {
 
           noteDescr[i].setAttribute("contenteditable", "true" )
@@ -148,8 +148,8 @@ export default {
      
     },
     cancel () {
-      let noteDescr = document.querySelectorAll('.note-descr')
-      let noteTitle  = document.querySelectorAll('.note-title')
+      const noteDescr = document.querySelectorAll('.note-descr')
+      const noteTitle  = document.querySelectorAll('.note-title')
       for (let i = 0; i < noteDescr.length; i++) {
 
         let oldDescr = localStorage.getItem(`noteDescr${[i]}`)
@@ -159,12 +159,12 @@ export default {
       }
     },
     toggleColorRed(index) {
-      let notebody = document.querySelectorAll('.note')
+      const notebody = document.querySelectorAll('.note')
         notebody[index].classList.toggle('red')
         notebody[index].classList.remove('green')
     },
     toggleColorGreen(index) {
-      let notebody = document.querySelectorAll('.note')
+      const notebody = document.querySelectorAll('.note')
         notebody[index].classList.toggle('green')
         notebody[index].classList.remove('red')
     }
